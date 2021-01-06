@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import { Link} from 'react-router-dom';
 
-import './css/homePage.css'
+import './css/HomePage.css'
 
 export default function HomePage() {
   return (
