@@ -5,13 +5,14 @@ import JobOverview from '../components/JobOverview'
 
 export default function JobPage() {
   const [input, setInput] = useState('');
-  const [autoCompleteResult, setAutoCompleteResult] = useState(['autocomplete1','autocomplete2']);
+  const [autoCompleteResults, setAutoCompleteResults] = useState(['autocomplete1','autocomplete2']);
   const [searchContent, setSearchContent] = useState('');
 
-  const handleType = (e) =>{
+  const handleType = async (e) =>{
     let userInput = e.target.value;
     setInput(userInput)
-    // make API calls to auto complete in backend to change autoCompleteResult
+    setAutoCompleteResults(await getAutoCompleteResults(userInput))
+    // make API calls to auto complete in backend to change autoCompleteResults
   }
   const handleSearch = (e) =>{
     // link to another page
@@ -25,6 +26,9 @@ export default function JobPage() {
       <input onChange={(e) =>handleType(e)} type = 'text'></input>
       <Button onClick = {(e)=>handleSearch(e)}> Search </Button>
       {searchContent && <JobOverview jobTitle ={searchContent} />}
+      {autoCompleteResults && autoCompleteResults.map((result) => (
+        <h4>{result}</h4>
+      ))}
     </div>
   )
 }
