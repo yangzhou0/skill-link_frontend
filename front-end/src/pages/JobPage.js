@@ -5,7 +5,7 @@ import JobOverview from '../components/JobOverview'
 
 export default function JobPage() {
   const [input, setInput] = useState('');
-  const [autoCompleteResults, setAutoCompleteResults] = useState(['autocomplete1','autocomplete2']);
+  const [autoCompleteResults, setAutoCompleteResults] = useState([]);
   const [searchContent, setSearchContent] = useState('');
 
   const handleType = async (e) =>{
