@@ -11,11 +11,16 @@ export default function SearchBar() {
   const [activeOption, setActiveOption] = useState(0);
   const [showOptions, setShowOptions] = useState(true);
 
+  useEffect(async ()=>{
+    console.log('updating autocomplete')
+    setAutoCompleteResults(await getAutoCompleteResults(input))
+  },[input])
+
   const handleType = async (e) =>{
     let userInput = e.target.value;
     await setShowOptions(true)
     await setInput(userInput)
-    await setAutoCompleteResults(await getAutoCompleteResults(userInput))
+
     // make API calls to auto complete in backend to change autoCompleteResults
   }
 
@@ -23,6 +28,7 @@ export default function SearchBar() {
     setActiveOption(0)
     setShowOptions(false)
     setInput(e.currentTarget.innerText)
+    setAutoCompleteResults([])
   }
   const handleSearch = (e) =>{
     // link to another page
@@ -36,6 +42,7 @@ export default function SearchBar() {
       setActiveOption(0)
       setShowOptions(false)
       setInput(autoCompleteResults[activeOption])
+      setAutoCompleteResults([])
     } else if (e.keyCode === 38) {
       if (activeOption === 0) {
         return;
@@ -61,6 +68,11 @@ export default function SearchBar() {
           <li className = {index === activeOption ? 'option-active' : ''} onClick={e=>handleClick(e)}>{option}</li>
         ))}
       </ul>
+      {showOptions && input && autoCompleteResults.length === 0 && 
+      <div className="no-options">
+        <em>No Option!</em>
+      </div>
+      }
     </React.Fragment>
   )
 }

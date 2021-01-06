@@ -6,7 +6,6 @@ export default function JobPage() {
 
   return (
     <div className = 'JobPage'>
-      <h1>job page</h1>
       <SearchBar />
     </div>
   )
