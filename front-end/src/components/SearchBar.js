@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
 import {getAutoCompleteResults} from '../API/AutoCompleteAPI'
+import {searchByJob} from '../API/JobSearchAPI'
 import JobOverview from './JobOverview'
 import './css/SearchBar.css'
 
@@ -28,9 +29,21 @@ export default function SearchBar() {
     setShowOptions(false)
     setInput(e.currentTarget.innerText)
   }
-  const handleSearch = (e) =>{
-    console.log('serached',autoCompleteResults[0])
-    setSearchContent(autoCompleteResults[0]['uuid'])
+  const handleSearch = async (e) =>{
+    let searchedUUID = findUUIDFromAutocompletes(input)
+    console.log('serached',searchedUUID)
+    await setSearchContent(searchedUUID)
+    searchByJob(searchedUUID).then((response)=>{
+      console.log(response)
+    })
+  }
+
+  const findUUIDFromAutocompletes = (title) => {
+    for (let i = 0; i < autoCompleteResults.length;i++){
+      if (autoCompleteResults[i]['jobTitle'] == input){
+        return autoCompleteResults[i]['uuid'] 
+      }
+    }
   }
 
 
