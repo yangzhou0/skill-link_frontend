@@ -15,7 +15,9 @@ const getAutoCompleteResults = async (input) => {
     if (i >= dataLen){ // break if there is less than 10 responses
       break;
     }
-    result.push(data[i]['suggestion'])
+    result.push({
+      "jobTitle":data[i]['suggestion'],
+      "uuid":data[i]['uuid']})
   }
   return result;
 };

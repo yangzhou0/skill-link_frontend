@@ -12,7 +12,6 @@ export default function SearchBar() {
   const [showOptions, setShowOptions] = useState(true);
 
   useEffect(async ()=>{
-    console.log('updating autocomplete')
     setAutoCompleteResults(await getAutoCompleteResults(input))
   },[input])
 
@@ -28,21 +27,18 @@ export default function SearchBar() {
     setActiveOption(0)
     setShowOptions(false)
     setInput(e.currentTarget.innerText)
-    setAutoCompleteResults([])
   }
   const handleSearch = (e) =>{
-    // link to another page
-    setSearchContent(input)
-    // body of HTTP Request
-    // call API 
+    console.log('serached',autoCompleteResults[0])
+    setSearchContent(autoCompleteResults[0]['uuid'])
   }
+
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       setActiveOption(0)
       setShowOptions(false)
-      setInput(autoCompleteResults[activeOption])
-      setAutoCompleteResults([])
+      setInput(autoCompleteResults[activeOption]['jobTitle'])
     } else if (e.keyCode === 38) {
       if (activeOption === 0) {
         return;
@@ -61,11 +57,10 @@ export default function SearchBar() {
       <div className = 'search'>
         <input className="search-box" onChange={(e) =>handleType(e)} onKeyDown={(e)=>{handleKeyDown(e)}} type = 'text' value = {input}/>
         <input type="submit" value ='' className = 'search-btn' onClick = {(e)=>handleSearch(e)} />
-        {/* {searchContent && <JobOverview jobTitle ={searchContent} />} */}
       </div>
       <ul className="options">
         {showOptions && input && autoCompleteResults.map((option,index) =>(
-          <li className = {index === activeOption ? 'option-active' : ''} onClick={e=>handleClick(e)}>{option}</li>
+          <li className = {index === activeOption ? 'option-active' : ''} onClick={e=>handleClick(e)}>{option['jobTitle']}</li>
         ))}
       </ul>
       {showOptions && input && autoCompleteResults.length === 0 && 
