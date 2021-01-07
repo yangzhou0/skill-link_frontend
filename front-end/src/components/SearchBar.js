@@ -51,7 +51,12 @@ export default function SearchBar() {
     if (e.keyCode === 13) {
       setActiveOption(0)
       setShowOptions(false)
-      setInput(autoCompleteResults[activeOption]['jobTitle'])
+      if (autoCompleteResults.length){
+        setInput(autoCompleteResults[activeOption]['jobTitle'])
+      }
+      else{
+        return
+      }
     } else if (e.keyCode === 38) {
       if (activeOption === 0) {
         return;
