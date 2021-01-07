@@ -6,7 +6,7 @@ import './App.css'
 
 function App() {
   return ( 
-    <div>
+    <div className = 'app'>
       <Router>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/jobs" component={JobPage} />
