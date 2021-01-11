@@ -13,7 +13,7 @@ export default function SkillSearchBar() {
 
   return (
     <div>
-      <h1>Skill Search Bar</h1>
+      <Select options={options} isMulti />
     </div>
   )
 }

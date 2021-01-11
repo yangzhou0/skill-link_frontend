@@ -40,8 +40,8 @@ const BASE_URL_SKILL = 'http://api.dataatwork.org/v1/skills/autocomplete?begins_
       break;
     }
     result.push({
-      "skillName":data[i]['suggestion'],
-      "uuid":data[i]['uuid']})
+      "label":data[i]['suggestion'],
+      "value":data[i]['uuid']})
   }
   return result;
 }
