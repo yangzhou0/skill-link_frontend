@@ -12,10 +12,7 @@ export default function SkillSearchBar() {
   //   getSkillAutoCompleteResults(input).then(options => setOptions(options))
   // },[input])
 
-  const loadNewOptions = inputValue =>
-  new Promise(resolve => {
-    resolve(getSkillAutoCompleteResults(inputValue));
-  });
+  const loadNewOptions = inputValue => getSkillAutoCompleteResults(inputValue);
   
   return (
     <div>
