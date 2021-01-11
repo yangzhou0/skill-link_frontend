@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 
-export default function JobOverview({jobTitle}) {
+export default function JobOverview({associatedSkills}) {
   return (
     <div>
-      <h1>{jobTitle}</h1>
+      {associatedSkills && console.log('here in Joboverview',associatedSkills)}
     </div>
   )
 }

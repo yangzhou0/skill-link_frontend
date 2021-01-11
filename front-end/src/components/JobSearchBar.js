@@ -1,19 +1,19 @@
 import React,{useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
-import {getAutoCompleteResults} from '../API/AutoCompleteAPI'
+import {getJobAutoCompleteResults} from '../API/AutoCompleteAPI'
 import {searchByJob} from '../API/JobSearchAPI'
-import JobOverview from './JobOverview'
 import './css/SearchBar.css'
 
-export default function SearchBar() {
+export default function SearchBar({updateAssociatedSkills}) {
   const [input, setInput] = useState('');
   const [autoCompleteResults, setAutoCompleteResults] = useState([]);
   const [searchContent, setSearchContent] = useState('');
   const [activeOption, setActiveOption] = useState(0);
   const [showOptions, setShowOptions] = useState(true);
+  const [associatedSkills, setAssociatedSkills] = useState(Object());
 
   useEffect(async ()=>{
-    setAutoCompleteResults(await getAutoCompleteResults(input))
+    setAutoCompleteResults(await getJobAutoCompleteResults(input))
   },[input])
 
   const handleType = async (e) =>{
@@ -34,7 +34,8 @@ export default function SearchBar() {
     console.log('serached',searchedUUID)
     await setSearchContent(searchedUUID)
     searchByJob(searchedUUID).then((response)=>{
-      console.log(response)
+      console.log(response);
+      updateAssociatedSkills(response)
     })
   }
 
