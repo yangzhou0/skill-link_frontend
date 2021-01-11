@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { Button } from 'react-bootstrap'
-import {getAutoCompleteResults} from '../API/AutoCompleteAPI'
+import {getJobAutoCompleteResults} from '../API/AutoCompleteAPI'
 import {searchByJob} from '../API/JobSearchAPI'
 import './css/SearchBar.css'
 
@@ -13,7 +13,7 @@ export default function SearchBar({updateAssociatedSkills}) {
   const [associatedSkills, setAssociatedSkills] = useState(Object());
 
   useEffect(async ()=>{
-    setAutoCompleteResults(await getAutoCompleteResults(input))
+    setAutoCompleteResults(await getJobAutoCompleteResults(input))
   },[input])
 
   const handleType = async (e) =>{

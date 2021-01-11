@@ -1,5 +1,5 @@
 const BASE_URL = 'http://api.dataatwork.org/v1/jobs/autocomplete?begins_with=' 
-const getAutoCompleteResults = async (input) => {
+const getJobAutoCompleteResults = async (input) => {
   let result = []
   if (!input){ // empty input, will return no autocomplete 
     return result
@@ -22,7 +22,10 @@ const getAutoCompleteResults = async (input) => {
   return result;
 };
 
+const getSkillAutoCompleteResults = async (input) => {
 
+}
 export {
-  getAutoCompleteResults
+  getJobAutoCompleteResults,
+  getSkillAutoCompleteResults
 };

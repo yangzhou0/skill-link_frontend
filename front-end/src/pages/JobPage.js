@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
 
-import SearchBar from '../components/SearchBar'
+import JobSearchBar from '../components/JobSearchBar'
 import JobOverview from '../components/JobOverview'
 
 import './css/JobPage.css'
@@ -11,7 +11,7 @@ export default function JobPage() {
   }
   return (
     <div className = 'JobPage'>
-      <SearchBar updateAssociatedSkills = {updateAssociatedSkills}/>
+      <JobSearchBar updateAssociatedSkills = {updateAssociatedSkills}/>
       <JobOverview associatedSkills = {associatedSkills}/>
     </div>
   )
