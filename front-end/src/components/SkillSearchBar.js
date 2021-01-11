@@ -1,19 +1,30 @@
 import React,{useState, useEffect} from 'react'
-import Select from 'react-select'
+import AsyncSelect from 'react-select/async';
 import {getSkillAutoCompleteResults} from '../API/AutoCompleteAPI'
 
 
 
 export default function SkillSearchBar() {
   const [options, setOptions] = useState([]);
+  const [input, setInput] = useState('py');
   const [selectedOptions, setSelectedOptions] = useState([]);
-  useEffect(() => {
-    getSkillAutoCompleteResults('py').then(options => setOptions(options))
-  },[])
+  // useEffect(() => {
+  //   getSkillAutoCompleteResults(input).then(options => setOptions(options))
+  // },[input])
 
+  const loadNewOptions = inputValue =>
+  new Promise(resolve => {
+    resolve(getSkillAutoCompleteResults(inputValue));
+  });
+  
   return (
     <div>
-      <Select options={options} isMulti />
+      <AsyncSelect
+        isMulti
+        cacheOptions
+        defaultOptions
+        loadOptions={loadNewOptions}
+      />
     </div>
   )
 }
