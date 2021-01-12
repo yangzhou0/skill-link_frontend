@@ -8,6 +8,7 @@ const ACTIONS = {
   ERROR: 'error'
 }
 
+const BASE_URL = "https://jobs.github.com/positions.json"
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST:
@@ -24,9 +25,16 @@ function reducer(state, action) {
 export default function useFetchJobs(params,page) {
   const [state,dispatch] = useReducer(reducer,{jobs:[],loading:true})
 
-  return (
-    <div>
-      
-    </div>
-  )
+  useEffect(() => {
+    dispatch({type: ACTIONS.MAKE_REQUEST})
+    axios.get(BASE_URL,{
+      params: {...params,markdown:true,page:page}
+    }).then(res=>
+      dispatch({type: ACTIONS.GET_DATA, payload:{jobs: res.data}})
+    ).catch(e=>
+      dispatch({type: ACTIONS.ERROR, payload:{error: e}})
+    )
+  }, [params,page])
+
+  return state
 }
