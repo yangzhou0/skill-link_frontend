@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { Button } from 'react-bootstrap'
+import { Link} from 'react-router-dom';
 import {getJobAutoCompleteResults} from '../API/AutoCompleteAPI'
 import {searchByJob} from '../API/JobSearchAPI'
 import './css/SearchBar.css'
@@ -73,6 +73,7 @@ export default function SearchBar({updateAssociatedSkills}) {
 
   return (
     <React.Fragment>
+        <div><h2>What is the zipcode you are searching?</h2></div>
       <div className = 'search'>
         <input className="search-box" onChange={(e) =>handleType(e)} onKeyDown={(e)=>{handleKeyDown(e)}} type = 'text' value = {input}/>
         <input type="submit" value ='' className = 'search-btn' onClick = {(e)=>handleSearch(e)} />
@@ -87,6 +88,10 @@ export default function SearchBar({updateAssociatedSkills}) {
         <em>No Option!</em>
       </div>
       }
+      
+
+      <Link to={`/zipcode`}> <button id = ''>Continue</button></Link>
+      
     </React.Fragment>
   )
 }
