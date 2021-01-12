@@ -16,8 +16,8 @@ const getJobAutoCompleteResults = async (input) => {
       break;
     }
     result.push({
-      "jobTitle":data[i]['suggestion'],
-      "uuid":data[i]['uuid']})
+      "label":data[i]['suggestion'],
+      "value":data[i]['uuid']})
   }
   return result;
 };
