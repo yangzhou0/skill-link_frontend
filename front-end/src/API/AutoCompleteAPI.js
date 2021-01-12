@@ -16,8 +16,8 @@ const getJobAutoCompleteResults = async (input) => {
       break;
     }
     result.push({
-      "jobTitle":data[i]['suggestion'],
-      "uuid":data[i]['uuid']})
+      "label":data[i]['suggestion'],
+      "value":data[i]['uuid']})
   }
   return result;
 };
@@ -45,7 +45,13 @@ const BASE_URL_SKILL = 'http://api.dataatwork.org/v1/skills/autocomplete?begins_
   }
   return result;
 }
+
+const getZipcodeAutoCompleteResults = async(input) =>{
+  // call auto complete API for zips
+}
+
 export {
   getJobAutoCompleteResults,
-  getSkillAutoCompleteResults
+  getSkillAutoCompleteResults,
+  getZipcodeAutoCompleteResults
 };

@@ -1,16 +1,16 @@
 import React,{useState, useEffect} from 'react'
 import AsyncSelect from 'react-select/async';
-import {getJobAutoCompleteResults} from '../API/AutoCompleteAPI'
+import {getZipcodeAutoCompleteResults} from '../API/AutoCompleteAPI'
 import { Link} from 'react-router-dom';
 
 
 
-export default function JobSearchBar() {
+export default function ZipcodeSearchBar() {
 
-  const loadNewOptions = inputValue => getJobAutoCompleteResults(inputValue);
-  const [selectedJob, setSelectedJob] = useState(Object())
-  const handleSelectJob = (e)=>{
-    setSelectedJob(e)
+  const loadNewOptions = inputValue => getZipcodeAutoCompleteResults(inputValue);
+  const [selectedZipcode, setSelectedZipcode] = useState(Object())
+  const handleSelectZipcode = (e)=>{
+    setSelectedZipcode(e)
   }
   return (
     <div>
@@ -18,7 +18,7 @@ export default function JobSearchBar() {
         cacheOptions
         defaultOptions
         loadOptions={loadNewOptions}
-        onChange = {handleSelectJob}
+        onChange = {handleSelectZipcode}
       />
       <Link to={`/zipcode`}>
         <button>Continue</button>
