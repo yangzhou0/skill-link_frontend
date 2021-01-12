@@ -15,8 +15,8 @@ export default function JobSearchBar() {
     JSON.parse(localStorage.getItem("searchContent"))|| Object()
   )
   useEffect(() => {
-    let parsedSelectedJob = JSON.stringify(selectedJob);
-    localStorage.setItem("searchContent", parsedSelectedJob);
+    let stringifiedSelectedJob = JSON.stringify(selectedJob);
+    localStorage.setItem("searchContent", stringifiedSelectedJob);
   }, [selectedJob]);
 
 
