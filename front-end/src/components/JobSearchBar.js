@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import AsyncSelect from 'react-select/async';
 import {getJobAutoCompleteResults} from '../API/AutoCompleteAPI'
+import { Link} from 'react-router-dom';
 
 
 
@@ -19,6 +20,10 @@ export default function JobSearchBar() {
         loadOptions={loadNewOptions}
         onChange = {handleSelectJob}
       />
+      <Link to={`/zipcode`}>
+        <button>Continue</button>
+      </Link>
+
     </div>
   )
 }
