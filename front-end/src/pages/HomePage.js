@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../components/Button.js'
+import { Link } from 'react-router-dom';
 import './css/homePage.css'
 
 export default function HomePage() {
@@ -9,15 +10,21 @@ export default function HomePage() {
       <h1>SKILL - LINK</h1>
       <p>Your Future Starts Here </p>
       <div className="hero-btns">
-        <a href="/jobs">
+        <Link to={`/joblisting`}>
+        <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large">SEARCH JOBS</Button>
+        </Link>
+        {/* <a href="/jobs">
           <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large">SEARCH JOBS</Button>
-        </a>
+        </a> */}
       </div>
       <br/>
       <div>
-        <a href="/skills">
+        <Link to={`/skills`}>
           <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large">ENTER SKILLS</Button>
-        </a>
+        </Link>
+        {/* <a href="/skills">
+          <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large">ENTER SKILLS</Button>
+        </a> */}
       </div>
     </div>
   )
