@@ -1,4 +1,6 @@
-.app{
-  background: #00B4CC;
-  height: 100%;
+.app {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
 }
