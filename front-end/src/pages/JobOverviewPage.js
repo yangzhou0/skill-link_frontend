@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
+import HomeIcon from '@material-ui/icons/Home';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import {searchByJob} from '../API/JobSearchAPI'
 
 function Copyright() {
   return (
@@ -61,18 +63,22 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function JobOverviewPage() {
+export default function JobOverviewPage () {
+
   const classes = useStyles();
+  let jobData = JSON.parse(localStorage.getItem('jobOverview'))
+  console.log('joboverview in joboverview page',jobData)
 
   return (
     <React.Fragment>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
+          <Link color="inherit" underline='hover' href="/">
+            <Typography variant="h6" color="inherit" noWrap>
+              Skill-Link
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
       <main>
