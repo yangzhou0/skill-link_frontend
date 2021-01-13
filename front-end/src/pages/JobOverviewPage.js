@@ -13,16 +13,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
+import { Link} from 'react-router-dom';
+
 import {searchByJob} from '../API/JobSearchAPI'
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      {/* <Link color="inherit" href="https://material-ui.com/"> */}
         Your Website
-      </Link>{' '}
+      {/* </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -67,6 +69,7 @@ export default function JobOverviewPage () {
 
   const classes = useStyles();
   let jobData = JSON.parse(localStorage.getItem('jobOverview'))
+  let jobTitle = JSON.parse(localStorage.getItem('searchContent')).label
   console.log('joboverview in joboverview page',jobData)
 
   return (
@@ -74,11 +77,13 @@ export default function JobOverviewPage () {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <Link color="inherit" underline='hover' href="/">
+          {/* <Link color="inherit" underline='hover' href="/"> */}
+          <Link to={`/joblisting`}>
             <Typography variant="h6" color="inherit" noWrap>
-              Skill-Link
+                Skill-Link
             </Typography>
           </Link>
+          {/* </Link> */}
         </Toolbar>
       </AppBar>
       <main>
@@ -86,29 +91,28 @@ export default function JobOverviewPage () {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+            {jobTitle}
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              {jobData.job_description}
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
-                    Main call to action
+                    Job Listings
                   </Button>
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
-                    Secondary action
+                    Educational Resources
                   </Button>
                 </Grid>
               </Grid>
             </div>
           </Container>
         </div>
+        {jobData.job_video}
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>

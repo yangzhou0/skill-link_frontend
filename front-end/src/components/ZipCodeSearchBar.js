@@ -24,7 +24,7 @@ export default function ZipcodeSearchBar() {
   }, [selectedZipcode]);
   
   const handleSubmit = async (e) =>{
-    localStorage.removeItem('jobOverview')
+    // localStorage.removeItem('jobOverview')
     let parsedSearchContent = JSON.parse(localStorage.getItem('searchContent'))
     let searchObject = {
       "job_title":parsedSearchContent.label + 's',
