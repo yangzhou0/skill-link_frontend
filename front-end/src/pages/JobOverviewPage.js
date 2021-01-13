@@ -78,7 +78,7 @@ export default function JobOverviewPage () {
       <AppBar position="relative">
         <Toolbar>
           {/* <Link color="inherit" underline='hover' href="/"> */}
-          <Link to={`/joblisting`}>
+          <Link to={`/`}>
             <Typography variant="h6" color="inherit" noWrap>
                 Skill-Link
             </Typography>
@@ -99,9 +99,11 @@ export default function JobOverviewPage () {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
-                    Job Listings
-                  </Button>
+                  <Link to={`/joblisting`}>
+                    <Button variant="contained" color="primary">
+                      Job Listings
+                    </Button>
+                  </Link>
                 </Grid>
                 <Grid item>
                   <Button variant="outlined" color="primary">
