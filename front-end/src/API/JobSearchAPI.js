@@ -1,7 +1,8 @@
 const BASE_URL = 'http://127.0.0.1:8000/skill_link/job_to_skills/' 
-const searchByJob = async (uuid) => {
+const searchByJob = async (searchObject) => {
   let jobObject = {
-    'uuid':uuid
+    'job_title':searchObject.job_title,
+    'zipcode':searchObject.zipcode
   }
   let response = await fetch(`${BASE_URL}`, {
     headers: {

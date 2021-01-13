@@ -8,10 +8,18 @@ import { Link} from 'react-router-dom';
 export default function JobSearchBar() {
 
   const loadNewOptions = inputValue => getJobAutoCompleteResults(inputValue);
-  const [selectedJob, setSelectedJob] = useState(Object())
   const handleSelectJob = (e)=>{
     setSelectedJob(e)
   }
+  const [selectedJob, setSelectedJob] = useState(
+    JSON.parse(localStorage.getItem("searchContent"))|| Object()
+  )
+  useEffect(() => {
+    let stringifiedSelectedJob = JSON.stringify(selectedJob);
+    localStorage.setItem("searchContent", stringifiedSelectedJob);
+  }, [selectedJob]);
+
+
   return (
     <div>
       <AsyncSelect
