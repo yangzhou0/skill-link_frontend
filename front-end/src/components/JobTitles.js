@@ -1,11 +1,28 @@
 import React from 'react'
 import { Card, Badge, Button } from 'react-bootstrap'
+import {useState} from 'react'
+import { Redirect } from 'react-router-dom'
+
 export default function JobTitles(props) {
+const [redirect,setRedirect] = useState(false)
+const [zipcode,setZipcode] = useState('')
+const [jobTitle,setJobTitle] = useState('')
 
 let jobs = props.jobs
+  const handleClick = (jobTitle,zipcode)=>{
+    setZipcode(zipcode)
+    setJobTitle(jobTitle)
+    setRedirect(true)
+  }
 
   return (
     <div>
+      {redirect ? <Redirect
+            to={{
+            pathname: "/joboverview",
+            state: { jobTitle:jobTitle, zipcode:zipcode }
+          }}
+      /> : <div></div>}
       {jobs.map((job) => (
         <Card>
           <Card.Body>
@@ -25,7 +42,7 @@ let jobs = props.jobs
                 </Badge>
                 <div>
                   <br/>
-                  <Button variant="primary">
+                  <Button onClick = {(e)=>{handleClick(job['OccupationTitle'],'11101')}} variant="primary">
                     Full Occupation Details
                   </Button>
                 </div>

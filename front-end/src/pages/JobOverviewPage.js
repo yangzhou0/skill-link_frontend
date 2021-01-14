@@ -66,7 +66,11 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [0, 1, 2];
 
-export default function JobOverviewPage () {
+export default function JobOverviewPage (props) {
+  let jobTitle1 = props.location.state.jobTitle
+  let zipcode = props.location.state.zipcode
+  console.log('title',jobTitle1)
+  console.log('zip',zipcode)
 
   const classes = useStyles();
   let jobData = JSON.parse(localStorage.getItem('jobOverview'))
