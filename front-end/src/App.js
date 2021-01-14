@@ -5,6 +5,7 @@ import ZipcodePage from './pages/ZipcodePage.js';
 import JobSearchResultPage from './pages/JobSearchResultPage.js';
 import JobListingPage from './pages/JobListingPage.js';
 import JobListingsPage from './pages/JobListingsPage.js';
+import JobOverviewPage from './pages/JobOverviewPage.js';
 import JobTitleListingsPage from './pages/JobTitleListingsPage';
 import JobSkillSurvey from './pages/JobSkillSurveyPage'
 import { BrowserRouter as Router, Route} from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/JobSearchResultPage" component={JobSearchResultPage} />
         <Route exact path="/joblisting" component={JobListingPage} />
         <Route exact path="/listings" component={JobListingsPage} />
+        <Route exact path="/joboverview" component={JobOverviewPage} />
         <Route exact path="/jobtitlelistings" component={JobTitleListingsPage} />
         <Route exact path="/survey" component={JobSkillSurvey} />
       </Router>

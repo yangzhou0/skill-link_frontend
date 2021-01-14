@@ -7,7 +7,14 @@ import SearchForm from '../components/JobListingPage/SearchForm';
 
 
 export default function JobListingPage() {
-  const [params, setParams] = useState({})
+  const location = JSON.parse(localStorage.getItem('searchContent')).zipcode
+  const description = JSON.parse(localStorage.getItem('searchContent')).label
+  const defaultParams = {
+    location: location,
+    description: description
+  }
+
+  const [params, setParams] = useState(defaultParams)
   const [page, setPage] = useState(1)
   const { jobs, loading, error, hasNextPage } = useFetchJobs(params, page)
   
