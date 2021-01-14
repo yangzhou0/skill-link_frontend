@@ -90,13 +90,18 @@ export default function JobOverviewPage () {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            {jobTitle}
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              {jobData.job_description}
-            </Typography>
+          <Container>
+            <div className="d-flex justify-content-start">
+              <div className="order-2 p-2 bd-highlight mt-5">
+                <Typography component="h2" variant="h2" color="textPrimary" gutterBottom>
+                {jobTitle}
+                </Typography>
+                <Typography variant="h5" color="textSecondary" paragraph>
+                  {jobData.job_description}
+                </Typography>
+              </div>
+              <div className="order-1 p-2 bd-highlight" dangerouslySetInnerHTML={{__html:jobData.job_video}} />;
+            </div>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
@@ -115,7 +120,6 @@ export default function JobOverviewPage () {
             </div>
           </Container>
         </div>
-        <div dangerouslySetInnerHTML={{__html:jobData.job_video}} />;
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
