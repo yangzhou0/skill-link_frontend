@@ -15,8 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 // import Link from '@material-ui/core/Link';
 import { Link} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown'
 
-import {searchByJob} from '../API/JobSearchAPI'
+
 
 function Copyright() {
   return (
@@ -114,7 +115,7 @@ export default function JobOverviewPage () {
             </div>
           </Container>
         </div>
-        {jobData.job_video}
+        <div dangerouslySetInnerHTML={{__html:jobData.job_video}} />;
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
