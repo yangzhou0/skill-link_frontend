@@ -19,7 +19,7 @@ export default function HomePage() {
       </div>
       <br/>
       <div>
-        <Link to={`/skills`}>
+        <Link to={`/survey`}>
           <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large">ENTER SKILLS</Button>
         </Link>
         {/* <a href="/skills">
