@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [0, 1, 2];
 
 export default function JobOverviewPage () {
 
@@ -72,7 +72,12 @@ export default function JobOverviewPage () {
   let jobData = JSON.parse(localStorage.getItem('jobOverview'))
   let jobTitle = JSON.parse(localStorage.getItem('searchContent')).label
   console.log('joboverview in joboverview page',jobData)
-
+  const jobObjectToRender = {
+    'salary': jobData.job_median_annual_salary,
+    "ksa_list": jobData.ksa_list,
+    'school_programs': jobData.school_programs
+  }
+  console.log('jobObjectToRender',jobObjectToRender)
   return (
     <React.Fragment>
       <CssBaseline />
@@ -123,7 +128,7 @@ export default function JobOverviewPage () {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
+            {Object.keys(jobObjectToRender).map((key,card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -133,10 +138,10 @@ export default function JobOverviewPage () {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {key}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      {jobObjectToRender[key]}
                     </Typography>
                   </CardContent>
                   <CardActions>
