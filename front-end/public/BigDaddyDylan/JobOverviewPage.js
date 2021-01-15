@@ -65,9 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const cards = [0, 1, 2];
-
 const photos = ["http://localhost:3000/images/money-2.jpg", "http://localhost:3000/images/office.jpg", "http://localhost:3000/images/occupation-2.jpg","http://localhost:3000/images/books-2.jpg", "http://localhost:3000/images/jumping.jpg", "http://localhost:3000/images/together.jpg"]
-
 
 export default function JobOverviewPage (props) {
   let jobTitle = props.location.state.jobTitle
@@ -115,7 +113,7 @@ export default function JobOverviewPage (props) {
         <div className={classes.heroContent}>
           <Container>
             <div className="d-flex justify-content-start">
-              <div className="order-2 p-2 bd-highlight">
+              <div className="order-2 p-2 bd-highlight mt-5">
                 <Typography component="h2" variant="h2" color="textPrimary" gutterBottom>
                 {jobTitle}
                 </Typography>
@@ -141,17 +139,9 @@ export default function JobOverviewPage (props) {
                   </Link>
                 </Grid>
                 <Grid item>
-                <Link to={{
-                    pathname:`/learningResources`,
-                    state:{
-                      jobTitle:jobTitle,
-                      zipcode:zipcode
-                    }
-                    }}>
-                    <Button variant="outlined" color="primary">
-                      Educational Resources
-                    </Button>
-                  </Link>
+                  <Button variant="outlined" color="primary">
+                    Educational Resources
+                  </Button>
                 </Grid>
               </Grid>
             </div>
@@ -197,4 +187,3 @@ export default function JobOverviewPage (props) {
     </React.Fragment>
   )
 }
-
