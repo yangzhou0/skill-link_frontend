@@ -169,14 +169,14 @@ export default function JobOverviewPage (props) {
                       {jobObjectToRender[key]}
                     </Typography>
                   </CardContent>
-                  <CardActions>
+                  {/* <CardActions>
                     <Button size="small" color="primary">
                       View
                     </Button>
                     <Button size="small" color="primary">
                       Edit
                     </Button>
-                  </CardActions>
+                  </CardActions> */}
                 </Card>
               </Grid>
             ))}
