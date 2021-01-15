@@ -86,7 +86,7 @@ export default function JobOverviewPage (props) {
   const jobObjectToRender = {
     'salary': jobData.job_median_annual_salary,
     "ksa_list": jobData.ksa_list,
-    'school_programs': jobData.school_programs
+    // 'school_programs': jobData.school_programs
   }
   console.log('jobObjectToRender',jobObjectToRender)
   return (
@@ -134,9 +134,17 @@ export default function JobOverviewPage (props) {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Educational Resources
-                  </Button>
+                <Link to={{
+                    pathname:`/learningResources`,
+                    state:{
+                      jobTitle:'Nuclear Engineers',
+                      zipcode:'11101'
+                    }
+                    }}>
+                    <Button variant="outlined" color="primary">
+                      Educational Resources
+                    </Button>
+                  </Link>
                 </Grid>
               </Grid>
             </div>
