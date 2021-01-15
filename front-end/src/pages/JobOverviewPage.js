@@ -35,6 +35,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
+    backgroundColor: theme.palette.background.paper,
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -89,7 +90,7 @@ export default function JobOverviewPage (props) {
   const jobObjectToRender = {
     'Median Annual Salary': jobData.job_median_annual_salary,
     'Coursera Courses': "",
-    'Related Occupations': jobData.school_programs,
+    'Related Occupations': "",
     'Knowledge': "",
     'Abilities': "",
     'Skills': ""
@@ -103,7 +104,7 @@ export default function JobOverviewPage (props) {
         <Toolbar>
           {/* <Link color="inherit" underline='hover' href="/"> */}
           <Link to={`/`}>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography className={classes.icon} variant="h6" color="inherit" noWrap>
                 Skill-Link
             </Typography>
           </Link>
@@ -123,7 +124,7 @@ export default function JobOverviewPage (props) {
                   {jobData.job_description}
                 </Typography>
               </div>
-              <div className="order-1 p-2 bd-highlight" dangerouslySetInnerHTML={{__html:jobData.job_video}} />;
+              <div className="order-1 p-2 bd-highlight" dangerouslySetInnerHTML={{__html:jobData.job_video}} />
             </div>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
