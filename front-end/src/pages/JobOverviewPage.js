@@ -15,8 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 // import Link from '@material-ui/core/Link';
 import { Link} from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'
-
+import {searchByJob} from '../API/JobSearchAPI'
+import {useState,useEffect} from 'react'
 
 
 function Copyright() {
@@ -66,11 +66,22 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [0, 1, 2];
 
-export default function JobOverviewPage () {
+export default function JobOverviewPage (props) {
+  let jobTitle = props.location.state.jobTitle
+  let zipcode = props.location.state.zipcode
+  let searchObject = {
+    "job_title":jobTitle,
+    "zipcode":zipcode
+  }
 
+  const [jobData,setJobData] = useState(Object())
+  useEffect(() => {
+    searchByJob(searchObject).then(response=>{
+      setJobData(response)
+    })
+  }, [props])
+  
   const classes = useStyles();
-  let jobData = JSON.parse(localStorage.getItem('jobOverview'))
-  let jobTitle = JSON.parse(localStorage.getItem('searchContent')).label
   console.log('joboverview in joboverview page',jobData)
   const jobObjectToRender = {
     'salary': jobData.job_median_annual_salary,
@@ -110,7 +121,13 @@ export default function JobOverviewPage () {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Link to={`/joblisting`}>
+                  <Link to={{
+                    pathname:`/joblisting`,
+                    state:{
+                      jobTitle:jobTitle,
+                      zipcode:zipcode
+                    }
+                    }}>
                     <Button variant="contained" color="primary">
                       Job Listings
                     </Button>
@@ -170,5 +187,5 @@ export default function JobOverviewPage () {
       </footer>
       {/* End footer */}
     </React.Fragment>
-  );
+  )
 }

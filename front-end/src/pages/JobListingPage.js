@@ -6,9 +6,9 @@ import JobPagination from '../components/JobListingPage/JobPagination';
 import SearchForm from '../components/JobListingPage/SearchForm';
 
 
-export default function JobListingPage() {
-  const location = JSON.parse(localStorage.getItem('searchContent')).zipcode
-  const description = JSON.parse(localStorage.getItem('searchContent')).label
+export default function JobListingPage(props) {
+  const location = props.location.state.zipcode
+  const description = props.location.state.jobTitle
   const defaultParams = {
     location: location,
     description: description
