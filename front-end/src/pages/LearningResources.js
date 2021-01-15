@@ -40,7 +40,7 @@ const LearningResources = (props) => {
             <img className="d-none d-md-block" height="50" src={typeof(contact.img_url) == 'string' ? contact.img_url : default_img } alt="school logo" />
           </div>
           <Card.Text>
-            <Button variant="primary" href={contact.school_url}> Visit Site </Button>
+            <Button variant="primary" href={contact.school_url} target="_blank"> Visit Site </Button>
           </Card.Text>
         </Card.Body>
       </Card>
