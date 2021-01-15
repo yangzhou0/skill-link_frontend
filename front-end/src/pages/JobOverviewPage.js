@@ -121,7 +121,13 @@ export default function JobOverviewPage (props) {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Link to={`/joblisting`}>
+                  <Link to={{
+                    pathname:`/joblisting`,
+                    state:{
+                      jobTitle:jobTitle,
+                      zipcode:zipcode
+                    }
+                    }}>
                     <Button variant="contained" color="primary">
                       Job Listings
                     </Button>
