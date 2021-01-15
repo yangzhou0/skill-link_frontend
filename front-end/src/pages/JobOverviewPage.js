@@ -108,7 +108,7 @@ export default function JobOverviewPage (props) {
         <div className={classes.heroContent}>
           <Container>
             <div className="d-flex justify-content-start">
-              <div className="order-2 p-2 bd-highlight mt-5">
+              <div className="order-2 p-2 bd-highlight">
                 <Typography component="h2" variant="h2" color="textPrimary" gutterBottom>
                 {jobTitle}
                 </Typography>
@@ -137,8 +137,8 @@ export default function JobOverviewPage (props) {
                 <Link to={{
                     pathname:`/learningResources`,
                     state:{
-                      jobTitle:'Nuclear Engineers',
-                      zipcode:'11101'
+                      jobTitle:jobTitle,
+                      zipcode:zipcode
                     }
                     }}>
                     <Button variant="outlined" color="primary">
