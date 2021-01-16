@@ -3,6 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import default_img from "../assets/graduation_cap.jpg"
 import {useState,useEffect} from 'react'
 import {findLearningResources} from '../API/LearningResourcesAPI'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 
 const LearningResources = (props) => {
   let jobTitle = props.location.state.jobTitle
@@ -11,17 +12,18 @@ const LearningResources = (props) => {
     "job_title":jobTitle,
     "zipcode":zipcode
   }
-  console.log('zip',zipcode)
-  console.log('title',jobTitle)
+
   const [contacts,setContacts] = useState('')
+  const [loading,setLoading] = useState(true)
   useEffect(() => {
     findLearningResources(searchObject).then(response=>{
       setContacts(response)
+      setLoading(false)
     })
   }, [props])
   
   return (
-    contacts ? <div class="container">
+    (contacts && !loading) ? <div class="container">
       {contacts["school_programs"].map(contact => {
       return (
         <Card className="mb-3">
@@ -46,7 +48,22 @@ const LearningResources = (props) => {
       </Card>
       )
     })}
-    </div> : <div></div>
+    </div> : 
+        <div class="d-flex flex-column" style={{
+          width: "100%",
+          height: "100",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          margin:"20%"
+        }}>
+          <div>
+            <ScaleLoader id = "loading_icon" color="#4A90E2" height="150" width='40'/>
+          </div>
+          <br/>
+          <div><h1>Ready for school?</h1></div>
+        </div>
   )
 };
 
