@@ -1,7 +1,7 @@
 import React from 'react'
 import SkillsToJobForm from '../components/SkillsToJobForm'
 import { useState, useEffect } from 'react'
-
+import SurveyZipcodeBar from '../components/SurveyZipcodeBar'
 
 export default function JobListingsPage() {
   const [lattitude,setLattitude] = useState(0)
@@ -16,10 +16,7 @@ export default function JobListingsPage() {
 
   return (
     <div>
-      <h4>To make your serach more accurate, please enter your zipcode</h4>
-      <input id = 'zipcode' placeholder='zipcode' ></input>
-      <button onClick ={getCurrentZipcode}>get location</button>
-      <button onClick ={(e)=>{setShowForm(true)}}>confirm</button>
+      <SurveyZipcodeBar setShowForm = {setShowForm} getCurrentZipcode={getCurrentZipcode} />
       {showForm && <SkillsToJobForm />}
     </div>
   )
