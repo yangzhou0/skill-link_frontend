@@ -14,9 +14,16 @@ export default function JobListingsPage() {
 
   }
 
+
+  let props = {
+    setLattitude: setLattitude,
+    setLongitude: setLongitude,
+    setShowForm: setShowForm,
+    getCurrentZipcode: getCurrentZipcode
+  }
   return (
     <div>
-      <SurveyZipcodeBar setShowForm = {setShowForm} getCurrentZipcode={getCurrentZipcode} />
+      <SurveyZipcodeBar {...props} />
       {showForm && <SkillsToJobForm />}
     </div>
   )
