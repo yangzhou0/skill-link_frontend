@@ -16,7 +16,7 @@ let jobs = props.jobs
   }
 
   return (
-    <div>
+    <div className='main-container'>
       {redirect ? <Redirect
             to={{
             pathname: "/joboverview",

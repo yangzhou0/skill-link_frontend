@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { Button } from '../components/Button.js'
+import '../pages/css/homePage.css'
 
 export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
   const reverseToZipcode = (latitude,longitude)=>{
@@ -60,11 +62,19 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
     setZipcode(e.target.value)
   }
   return (
-    <div>
+    <div className="hero-container">
+      <video src="/videos/video-3.mp4" autoPlay loop muted/>
+      <h1>SKILL - LINK</h1>
       <h4>To make your serach more accurate, please enter your zipcode</h4>
-      <input id = 'zipcode' placeholder='zipcode' onChange = {enterZipcode} required></input>
-      <button onClick ={(e) =>getLocation()}>get location</button>
-      <button onClick ={(e)=>{setShowForm(true)}}>confirm</button>
+
+      <input className="input" id = 'zipcode' placeholder='zipcode' onChange = {enterZipcode} required></input>
+
+      <div className="hero-btns">
+        <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large" onClick ={(e) =>getLocation()}>GET LOCATION</Button>
+      </div>
+      <div className="hero-btns">
+        <Button className="btns" buttonStyle="btn--outline" buttonSize="btn-large" onClick ={(e)=>{setShowForm(true)}}>CONFIRM</Button>
+      </div>
     </div>
   )
 }

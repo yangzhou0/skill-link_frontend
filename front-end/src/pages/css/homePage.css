@@ -24,6 +24,11 @@ video {
   margin-top: -225px;
 }
 
+.hero-container > h4 {
+  color: #fff;
+  font-size: 30px;
+}
+
 .hero-container > p {
   margin-top: 8px;
   color: #fff;
@@ -49,6 +54,10 @@ video {
     font-size: 70px;
     margin-top: -150px;
   }
+  .hero-container > h4 {
+    color: #fff;
+    font-size: 30px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -67,6 +76,6 @@ video {
   }
 
   .btn {
-    width: 100%;
+    width: 200px;
   }
 }
