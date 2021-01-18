@@ -12,9 +12,11 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
     .then(function (response) {
       let address_components = response.data.results[0].address_components
       let zipcode = address_components[address_components.length - 1].short_name
-      console.log(zipcode)
+      let stateCountryInfo = response.data.results.pop()
+      let country = stateCountryInfo.address_components.pop().long_name
+      let state = stateCountryInfo.address_components.pop().short_name
       setZipcode(zipcode)
-      setShowForm(true)
+      document.getElementById(`zipcode`).value = `${zipcode} (${state}, ${country})`
     })
     .catch(function (error) {
       console.log(error);
@@ -54,11 +56,13 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
     }
   }
 
-
+  const enterZipcode = (e)=>{
+    setZipcode(e.target.value)
+  }
   return (
     <div>
       <h4>To make your serach more accurate, please enter your zipcode</h4>
-      <input id = 'zipcode' placeholder='zipcode' ></input>
+      <input id = 'zipcode' placeholder='zipcode' onChange = {enterZipcode} required></input>
       <button onClick ={(e) =>getLocation()}>get location</button>
       <button onClick ={(e)=>{setShowForm(true)}}>confirm</button>
     </div>

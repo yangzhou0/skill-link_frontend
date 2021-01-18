@@ -17,7 +17,7 @@ export default function JobListingsPage() {
   return (
     <div>
       <SurveyZipcodeBar {...props} />
-      {showForm && <SkillsToJobForm zipCode = {zipcode}/>}
+      {zipcode && showForm && <SkillsToJobForm zipCode = {zipcode}/>}
     </div>
   )
 }
