@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Badge, Button } from 'react-bootstrap'
 import {useState} from 'react'
 import { Redirect } from 'react-router-dom'
+import '../pages/css/MainPages.css'
 
 export default function JobTitles(props) {
 const [redirect,setRedirect] = useState(false)
@@ -16,7 +17,7 @@ let jobs = props.jobs
   }
 
   return (
-    <div>
+    <div className='main-container'>
       {redirect ? <Redirect
             to={{
             pathname: "/joboverview",

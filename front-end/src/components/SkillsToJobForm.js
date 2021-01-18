@@ -1,7 +1,9 @@
 import React, {useState, useEffect } from "react";
-import { Container, Col, Row, Jumbotron, Form, Button } from "react-bootstrap";
+import { Container, Col, Row, Jumbotron, Form } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { getJobsListingsFromForm } from '../API/SkillsToJobFormAPI'
+import { DisabledButton } from '../components/DisabledButton.js'
+import '../pages/css/homePage.css'
 
 export default function SkillsToJobForm({zipCode}) {
   const [jobData, setJobData] = useState();
@@ -158,7 +160,8 @@ export default function SkillsToJobForm({zipCode}) {
   }
 
     return (
-      <>
+      <div>
+        <video src="/videos/video-3.mp4" autoPlay loop muted/>
         {redirect ? <Redirect
             to={{
             pathname: "/jobtitlelistings",
@@ -171,11 +174,12 @@ export default function SkillsToJobForm({zipCode}) {
           <Row>
             <Col md={{ span: 7, offset: 3 }}>
               <Jumbotron>
-                <p>
-                  Interested in what careers you could have with your skillset? Fill out the form below!
-                </p>
+                
                 <Form onSubmit={handleSubmit}>
-                  <h2>Select Your Confidence Of Each Skill</h2>
+                  <h1>Select Your Confidence Of Each Skill</h1>
+                  <h3>
+                  Interested in what careers you could have with your skillset? Fill out the form below! Make sure you fill out at lease 8!
+                </h3>
                   {skills.map((skill) => (
                     <Form.Row>
                     <Form.Group as={Col} controlId={skill.ElementName}>
@@ -223,14 +227,16 @@ export default function SkillsToJobForm({zipCode}) {
                     </Form.Group>
                   </Form.Row>
                   ))}
-                  <Button variant="primary" type="submit" id='submit-button' disabled>
+                  <div className="hero-btns">
+                    <DisabledButton variant="primary" type="submit" id='submit-button' disabled>
                     Submit
-                  </Button>
+                    </DisabledButton>
+                  </div>
                 </Form>
               </Jumbotron>
             </Col>
           </Row>
         </Container>
-      </>
+      </div>
     );
   }
