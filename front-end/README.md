@@ -1,3 +1,6 @@
+# Demo
+Click [here](https://github.com/mikeplatoon/job_search_frontend).\
+The backend for this project built on Django can be found [here](https://github.com/mikeplatoon/job_search_backend).
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
