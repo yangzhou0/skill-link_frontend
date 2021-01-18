@@ -28,6 +28,7 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
     });  
   }
   const getLocation = () => {
+    setShowForm(false)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates, handleLocationError);
     } else {
@@ -59,6 +60,7 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
   }
 
   const enterZipcode = (e)=>{
+    setShowForm(false)
     setZipcode(e.target.value)
   }
   return (
