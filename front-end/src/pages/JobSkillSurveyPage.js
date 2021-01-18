@@ -16,7 +16,7 @@ export default function JobListingsPage() {
   }
   return (
     <div>
-      { !showForm && <SurveyZipcodeBar {...props} />}
+      {(zipcode.length != 5 || !showForm) && <SurveyZipcodeBar {...props} />}
       {zipcode && showForm && <SkillsToJobForm zipCode = {zipcode}/>}
     </div>
   )
