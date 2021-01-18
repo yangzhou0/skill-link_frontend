@@ -14,6 +14,7 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
       let zipcode = address_components[address_components.length - 1].short_name
       console.log(zipcode)
       setZipcode(zipcode)
+      setShowForm(true)
     })
     .catch(function (error) {
       console.log(error);
