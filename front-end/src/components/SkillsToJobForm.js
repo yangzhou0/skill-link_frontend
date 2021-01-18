@@ -143,6 +143,20 @@ export default function SkillsToJobForm({zipCode}) {
     }
   })
 
+  const radioButtonSelectedCount = () => {
+    let count = 0
+    const list = document.querySelectorAll('input[type=radio]');
+    for (let radio of list) {
+      if (radio.checked == true) {
+        count = count + 1
+      }
+    }
+    if(count > 7) {
+      const button = document.getElementById('submit-button');
+      button.disabled = false
+    }
+  }
+
     return (
       <>
         {redirect ? <Redirect
@@ -170,41 +184,46 @@ export default function SkillsToJobForm({zipCode}) {
                         type="radio"
                         label="Not Confident"
                         name={skill.ElementId}
-                        ids={skill.ElementName}
+                        ids={skill.ElementId}
                         value="1"
+                        onChange={() => radioButtonSelectedCount()}
                       />
                       <Form.Check
                         type="radio"
                         label="A Little Confident"
                         name={skill.ElementId}
-                        ids={skill.ElementName}
+                        ids={skill.ElementId}
                         value="2"
+                        onChange={() => radioButtonSelectedCount()}
                       />
                       <Form.Check
                         type="radio"
                         label="Okay With"
                         name={skill.ElementId}
-                        ids={skill.ElementName}
+                        ids={skill.ElementId}
                         value="3"
+                        onChange={() => radioButtonSelectedCount()}
                       />
                       <Form.Check
                         type="radio"
                         label="Confident"
                         name={skill.ElementId}
-                        ids={skill.ElementName}
+                        ids={skill.ElementId}
                         value="4"
+                        onChange={() => radioButtonSelectedCount()}
                       />
                       <Form.Check
                         type="radio"
                         label="Very Confident"
                         name={skill.ElementId}
-                        ids={skill.ElementName}
+                        ids={skill.ElementId}
                         value="5"
+                        onChange={() => radioButtonSelectedCount()}
                       />
                     </Form.Group>
                   </Form.Row>
                   ))}
-                  <Button variant="primary" type="submit">
+                  <Button variant="primary" type="submit" id='submit-button' disabled>
                     Submit
                   </Button>
                 </Form>
