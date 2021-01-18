@@ -87,7 +87,7 @@ export default function JobOverviewPage (props) {
   const classes = useStyles();
   console.log('joboverview in joboverview page',jobData)
   const jobObjectToRender = {
-    'Median Annual Salary': jobData.job_median_annual_salary,
+    'Median Annual Salary': [`$${jobData.job_median_annual_salary}`],
     'Daily Activities': jobData.daily_activities,
     'Related Occupations': jobData.related_occupations,
     'Knowledge': jobData.knowledge_list,
