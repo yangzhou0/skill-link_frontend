@@ -10,7 +10,7 @@ export default function JobListingPage(props) {
   const location = props.location.state.zipcode
   const description = props.location.state.jobTitle
   const defaultParams = {
-    location: location,
+    // location: location,
     description: description
   }
 
