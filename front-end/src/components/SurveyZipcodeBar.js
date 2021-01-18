@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
   const reverseToZipcode = (latitude,longitude)=>{
@@ -9,8 +10,9 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
       }
     })
     .then(function (response) {
-      console.log(response);
-      let zipcode = response.results[0].address_components[address_components.length - 1].short_name
+      let address_components = response.data.results[0].address_components
+      let zipcode = address_components[address_components.length - 1].short_name
+      console.log(zipcode)
       setZipcode(zipcode)
     })
     .catch(function (error) {
@@ -21,20 +23,16 @@ export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
     });  
   }
   const getLocation = () => {
-    console.log('start accessing location')
     if (navigator.geolocation) {
-      console.log('retrieving location')
       navigator.geolocation.getCurrentPosition(getCoordinates, handleLocationError);
     } else {
       alert("Geolocation is not supported by this browser.");
     }
   }
   const getCoordinates = (position) => {
-    console.log('position',position)
-    latitude = position.coords.latitude;
-    longitude position.coords.longitude;
-    reverseToZipcode = (latitude,longitude)
-    setZipcode
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    reverseToZipcode(latitude,longitude)
   }
   const handleLocationError = (error) => {
     switch(error.code) {
