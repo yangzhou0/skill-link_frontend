@@ -10,16 +10,13 @@ export default function JobListingsPage() {
   const [showForm,setShowForm] = useState(false)
   const [zipcode,setZipcode] = useState('')
 
-  const getCurrentZipcode = (e)=>{
-
-  }
 
 
   let props = {
     setLattitude: setLattitude,
     setLongitude: setLongitude,
     setShowForm: setShowForm,
-    getCurrentZipcode: getCurrentZipcode
+    setZipcode: setZipcode
   }
   return (
     <div>

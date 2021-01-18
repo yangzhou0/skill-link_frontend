@@ -1,7 +1,25 @@
 import React from 'react'
 
-export default function SurveyZipcodeBar({getCurrentZipcode,setShowForm,setLattitude,setLongitude}) {
-
+export default function SurveyZipcodeBar({setZipcode,setShowForm}) {
+  const reverseToZipcode = (latitude,longitude)=>{
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        latlng: `${latitude},${longitude}`,
+        key: "AIzaSyBQRL4jBWcGAQAoKl6z5a5FbKvetm8RZ2M"
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      let zipcode = response.results[0].address_components[address_components.length - 1].short_name
+      setZipcode(zipcode)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });  
+  }
   const getLocation = () => {
     console.log('start accessing location')
     if (navigator.geolocation) {
@@ -13,8 +31,10 @@ export default function SurveyZipcodeBar({getCurrentZipcode,setShowForm,setLatti
   }
   const getCoordinates = (position) => {
     console.log('position',position)
-    setLattitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
+    latitude = position.coords.latitude;
+    longitude position.coords.longitude;
+    reverseToZipcode = (latitude,longitude)
+    setZipcode
   }
   const handleLocationError = (error) => {
     switch(error.code) {
