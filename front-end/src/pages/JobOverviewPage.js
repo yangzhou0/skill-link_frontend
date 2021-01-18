@@ -59,13 +59,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(6),
   },
 }));
 
 const cards = [0, 1, 2];
+
 const photos = ["http://localhost:3000/images/money-2.jpg", "http://localhost:3000/images/office.jpg", "http://localhost:3000/images/occupation-2.jpg","http://localhost:3000/images/books-2.jpg", "http://localhost:3000/images/jumping.jpg", "http://localhost:3000/images/together.jpg"]
+
 
 export default function JobOverviewPage (props) {
   let jobTitle = props.location.state.jobTitle
@@ -86,11 +88,11 @@ export default function JobOverviewPage (props) {
   console.log('joboverview in joboverview page',jobData)
   const jobObjectToRender = {
     'Median Annual Salary': jobData.job_median_annual_salary,
-    'Coursera Courses': "",
-    'Related Occupations': jobData.school_programs,
-    'Knowledge': "",
-    'Abilities': "",
-    'Skills': ""
+    'Daily Activities': jobData.daily_activities,
+    'Related Occupations': jobData.related_occupations,
+    'Knowledge': jobData.knowledge_list,
+    'Abilities': jobData.abilities_list,
+    'Skills': jobData.skills_list
   }
 
   console.log('jobObjectToRender',jobObjectToRender)
@@ -101,8 +103,9 @@ export default function JobOverviewPage (props) {
         <Toolbar>
           {/* <Link color="inherit" underline='hover' href="/"> */}
           <Link to={`/`}>
+            <CameraIcon className={classes.icon} />
             <Typography variant="h6" color="inherit" noWrap>
-                Skill-Link
+              Skill Link
             </Typography>
           </Link>
           {/* </Link> */}
@@ -113,7 +116,7 @@ export default function JobOverviewPage (props) {
         <div className={classes.heroContent}>
           <Container>
             <div className="d-flex justify-content-start">
-              <div className="order-2 p-2 bd-highlight mt-5">
+              <div className="order-2 p-2 bd-highlight">
                 <Typography component="h2" variant="h2" color="textPrimary" gutterBottom>
                 {jobTitle}
                 </Typography>
@@ -121,7 +124,7 @@ export default function JobOverviewPage (props) {
                   {jobData.job_description}
                 </Typography>
               </div>
-              <div className="order-1 p-2 bd-highlight" dangerouslySetInnerHTML={{__html:jobData.job_video}} />;
+              <div className="order-1 p-2 bd-highlight" dangerouslySetInnerHTML={{__html:jobData.job_video}} />
             </div>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -139,9 +142,17 @@ export default function JobOverviewPage (props) {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Educational Resources
-                  </Button>
+                <Link to={{
+                    pathname:`/learningResources`,
+                    state:{
+                      jobTitle:jobTitle,
+                      zipcode:zipcode
+                    }
+                    }}>
+                    <Button variant="outlined" color="primary">
+                      Educational Resources
+                    </Button>
+                  </Link>
                 </Grid>
               </Grid>
             </div>
@@ -187,3 +198,4 @@ export default function JobOverviewPage (props) {
     </React.Fragment>
   )
 }
+

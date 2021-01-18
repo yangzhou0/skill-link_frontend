@@ -3,7 +3,7 @@ import { Container, Col, Row, Jumbotron, Form, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { getJobsListingsFromForm } from '../API/SkillsToJobFormAPI'
 
-export default function SkillsToJobForm(props) {
+export default function SkillsToJobForm({zipCode}) {
   const [jobData, setJobData] = useState();
   const [redirect, setRedirect] = useState(false);
   const skills = [{
@@ -148,7 +148,8 @@ export default function SkillsToJobForm(props) {
         {redirect ? <Redirect
             to={{
             pathname: "/jobtitlelistings",
-            state: { jobs: jobData['0']['SKARankList'].slice(0, 20) }
+            state: { jobs: jobData['0']['SKARankList'].slice(0, 20), zipCode:zipCode },
+
           }}
         /> : <div></div>}
         <br />

@@ -7,8 +7,8 @@ import SearchForm from '../components/JobListingPage/SearchForm';
 
 
 export default function JobListingPage(props) {
-  const location = props.location.state.zipcode
-  const description = props.location.state.jobTitle
+  const location = props.location.state? props.location.state.zipcode : ''
+  const description = props.location.state? props.location.state.jobTitle : 'software engineer'
   const defaultParams = {
     location: location,
     description: description

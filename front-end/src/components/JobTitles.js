@@ -42,7 +42,7 @@ let jobs = props.jobs
                 </Badge>
                 <div>
                   <br/>
-                  <Button onClick = {(e)=>{handleClick(job['OccupationTitle'],'11101')}} variant="primary">
+                  <Button onClick = {(e)=>{handleClick(job['OccupationTitle'],props.zipCode)}} variant="primary">
                     Full Occupation Details
                   </Button>
                 </div>
