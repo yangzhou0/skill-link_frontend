@@ -24,7 +24,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       {/* <Link color="inherit" href="https://material-ui.com/"> */}
-        Your Website
+        Skill-Link
       {/* </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
@@ -95,6 +95,24 @@ export default function JobOverviewPage (props) {
     'Skills': jobData.skills_list
   }
 
+  const checkingProperties = (key, array) => {
+    if (Object.keys(jobData).length !== 0){
+      if (key == 'Related Occupations') {
+        return array.map((item) => <li>             
+          <Link to={{
+          pathname:`/joboverview`,
+          state:{
+            jobTitle: item,
+            zipcode: zipcode
+          }
+          }}>{item}</Link></li>)
+      }
+      else{
+        return array.map((item) => <li>{item}</li>)
+      }
+    }
+  }
+
   console.log('jobObjectToRender',jobObjectToRender)
   return (
     <React.Fragment>
@@ -103,9 +121,10 @@ export default function JobOverviewPage (props) {
         <Toolbar>
           {/* <Link color="inherit" underline='hover' href="/"> */}
           <Link to={`/`}>
-            <CameraIcon className={classes.icon} />
             <Typography variant="h6" color="inherit" noWrap>
-              Skill Link
+              <Button variant="contained" color="primary" size="large">
+                Skill - Link
+              </Button>
             </Typography>
           </Link>
           {/* </Link> */}
@@ -175,7 +194,11 @@ export default function JobOverviewPage (props) {
                       {key}
                     </Typography>
                     <Typography>
-                      {jobObjectToRender[key]}
+                      <div>
+                        <ul>
+                          {checkingProperties(key, jobObjectToRender[key])}
+                        </ul>
+                      </div>
                     </Typography>
                   </CardContent>
                 </Card>
@@ -187,10 +210,8 @@ export default function JobOverviewPage (props) {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
         </Typography>
         <Copyright />
       </footer>
