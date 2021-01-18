@@ -95,9 +95,21 @@ export default function JobOverviewPage (props) {
     'Skills': jobData.skills_list
   }
 
-  const checkingProperties = (array) => {
+  const checkingProperties = (key, array) => {
     if (Object.keys(jobData).length !== 0){
-    return array.map((item) => <li>{item}</li>)
+      if (key == 'Related Occupations') {
+        return array.map((item) => <li>             
+          <Link to={{
+          pathname:`/joboverview`,
+          state:{
+            jobTitle: item,
+            zipcode: zipcode
+          }
+          }}>{item}</Link></li>)
+      }
+      else{
+        return array.map((item) => <li>{item}</li>)
+      }
     }
   }
 
@@ -184,7 +196,7 @@ export default function JobOverviewPage (props) {
                     <Typography>
                       <div>
                         <ul>
-                          {checkingProperties(jobObjectToRender[key])}
+                          {checkingProperties(key, jobObjectToRender[key])}
                         </ul>
                       </div>
                     </Typography>
