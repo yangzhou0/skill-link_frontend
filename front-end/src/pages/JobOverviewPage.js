@@ -35,7 +35,6 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
-    backgroundColor: theme.palette.background.paper,
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -60,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.warning.main,
+    backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(6),
   },
 }));
@@ -104,8 +103,9 @@ export default function JobOverviewPage (props) {
         <Toolbar>
           {/* <Link color="inherit" underline='hover' href="/"> */}
           <Link to={`/`}>
-            <Typography className={classes.icon} variant="h6" color="inherit" noWrap>
-                Skill-Link
+            <CameraIcon className={classes.icon} />
+            <Typography variant="h6" color="inherit" noWrap>
+              Skill Link
             </Typography>
           </Link>
           {/* </Link> */}
