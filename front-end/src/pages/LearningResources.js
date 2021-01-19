@@ -50,9 +50,10 @@ const LearningResources = (props) => {
     })}
     </div> : 
         <div class="d-flex flex-column" style={{
-          width: "100%",
-          height: "100",
+          // width: "100%",
+          // height: "100vh",
           display: "flex",
+          flexdirection: "column",
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
