@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8000/skill_link/learning_resources/'
+const BASE_URL = 'https://skill-link-backend.herokuapp.com/skill_link/learning_resources/'
 const findLearningResources = async (searchObject) => {
   let jobObject = {
     'job_title':searchObject.job_title,
