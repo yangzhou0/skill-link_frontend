@@ -9,6 +9,7 @@ const ACTIONS = {
   UPDATE_HAS_NEXT_PAGE: 'update-has-next-page'
 }
 
+const proxy_url = "https://polar-sea-25461.herokuapp.com/"
 const BASE_URL = "https://jobs.github.com/positions.json"
 
 function reducer(state, action) {
@@ -32,7 +33,7 @@ export default function useFetchJobs(params,page) {
   useEffect(() => {
     const cancelToken1 = axios.CancelToken.source()
     dispatch({type: ACTIONS.MAKE_REQUEST})
-    axios.get(BASE_URL,{
+    axios.get(proxy_url+BASE_URL,{
       cancelToken: cancelToken1.token,
       params: {...params,markdown:true,page:page},
       headers: {
@@ -47,7 +48,7 @@ export default function useFetchJobs(params,page) {
 
     // check if it is the last page
     const cancelToken2 = axios.CancelToken.source()
-    axios.get(BASE_URL, {
+    axios.get(proxy_url+BASE_URL, {
       cancelToken: cancelToken2.token,
       params: { markdown: true, page: page + 1, ...params },
       headers: {
