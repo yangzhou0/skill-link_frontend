@@ -34,7 +34,10 @@ export default function useFetchJobs(params,page) {
     dispatch({type: ACTIONS.MAKE_REQUEST})
     axios.get(BASE_URL,{
       cancelToken: cancelToken1.token,
-      params: {...params,markdown:true,page:page}
+      params: {...params,markdown:true,page:page},
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
     }).then(res=>
       dispatch({type: ACTIONS.GET_DATA, payload:{jobs: res.data}})
     ).catch(e=>{
@@ -46,7 +49,10 @@ export default function useFetchJobs(params,page) {
     const cancelToken2 = axios.CancelToken.source()
     axios.get(BASE_URL, {
       cancelToken: cancelToken2.token,
-      params: { markdown: true, page: page + 1, ...params }
+      params: { markdown: true, page: page + 1, ...params },
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
     }).then(res => {
       dispatch({ type: ACTIONS.UPDATE_HAS_NEXT_PAGE, payload: { hasNextPage: res.data.length !== 0 } }) 
     }).catch(e => {
