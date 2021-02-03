@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [0, 1, 2];
 
-const photos = ["http://localhost:3000/images/money-2.jpg", "http://localhost:3000/images/office.jpg", "http://localhost:3000/images/occupation-2.jpg","http://localhost:3000/images/books-2.jpg", "http://localhost:3000/images/jumping.jpg", "http://localhost:3000/images/together.jpg"]
+const photos = ["https://skill-link-frontend.herokuapp.com/images/money-2.jpg", "https://skill-link-frontend.herokuapp.com/images/office.jpg", "https://skill-link-frontend.herokuapp.com/images/occupation-2.jpg","https://skill-link-frontend.herokuapp.com/images/books-2.jpg", "https://skill-link-frontend.herokuapp.com/images/jumping.jpg", "https://skill-link-frontend.herokuapp.com/images/together.jpg"]
 
 
 export default function JobOverviewPage (props) {
