@@ -23,7 +23,7 @@ const LearningResources = (props) => {
   }, [props])
   
   return (
-    (contacts && !loading) ? <div class="container">
+    (contacts && !loading) ? <div className="container">
       {contacts["school_programs"].map(contact => {
       return (
         <Card className="mb-3">
@@ -49,7 +49,7 @@ const LearningResources = (props) => {
       )
     })}
     </div> : 
-        <div class="d-flex flex-column" style={{
+        <div className="d-flex flex-column" style={{
           // width: "100%",
           // height: "100vh",
           display: "flex",
