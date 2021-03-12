@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Card, Badge, Button, Collapse } from 'react-bootstrap'
 import ReactMarkdown from 'react-markdown'
-
-
+import gfm from 'remark-gfm'
 export default function Job({job}) {
   const [open, setOpen] = useState(false)
 
@@ -20,7 +19,7 @@ export default function Job({job}) {
               <Badge variant="secondary" className="mr-2">{job.type}</Badge>
               <Badge variant="secondary">{job.location}</Badge>
               <div style={{ wordBreak: 'break-all' }}>
-                <ReactMarkdown source={job.how_to_apply} />
+                <ReactMarkdown plugins={[gfm]} children={job.how_to_apply} />
               </div>
             </div>
             <img className="d-none d-md-block" height="50" alt={job.company} src={job.company_logo} />
